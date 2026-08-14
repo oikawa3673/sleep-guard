@@ -1,0 +1,11 @@
+# .bat は Shift-JIS + CRLF が必須。Gitに一切変換させない（変換されると動かなくなる）
+*.bat -text
+*.vbs -text
+*.ps1 -text
+
+# ソースは CRLF 固定（BOM付きUTF-8のまま扱う）
+*.cs -text
+
+# バイナリ
+*.exe binary
+*.zip binary
