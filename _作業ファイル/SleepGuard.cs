@@ -89,7 +89,7 @@ public class SleepGuard : Form
         tray.ContextMenuStrip = menu;
         tray.DoubleClick += delegate { ShowWindowAgain(); };
 
-        // 4分ごと。会社ポリシーのスクリーンセーバー(10分)より十分短い。
+        // 4分ごと。一般的なスクリーンセーバー発動時間(5〜10分)より十分短い。
         // OFFの間はタイマーを止めるので、待機中のCPU使用はゼロ。
         timer = new Timer();
         timer.Interval = 240000;
@@ -179,7 +179,7 @@ public class SleepGuard : Form
     {
         // 二重起動を防ぐ（無駄な常駐を増やさない）
         bool isNew;
-        using (System.Threading.Mutex mtx = new System.Threading.Mutex(true, "SleepGuard_TCloud_SingleInstance", out isNew))
+        using (System.Threading.Mutex mtx = new System.Threading.Mutex(true, "SleepGuard_SingleInstance", out isNew))
         {
             if (!isNew)
             {

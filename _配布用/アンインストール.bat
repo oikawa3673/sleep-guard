@@ -19,7 +19,7 @@ del "%USERPROFILE%\Desktop\スリープ防止.lnk" >nul 2>nul
 del "%USERPROFILE%\OneDrive\デスクトップ\スリープ防止.lnk" >nul 2>nul
 
 rem 登録削除
-reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Uninstall\SleepGuardTCloud" /f >nul 2>nul
+reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Uninstall\SleepGuardApp" /f >nul 2>nul
 
 echo.
 echo   [完了] アンインストールしました。

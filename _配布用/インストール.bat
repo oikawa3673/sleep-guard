@@ -34,10 +34,10 @@ cscript //nologo "%VBS%" >nul
 del "%VBS%" >nul 2>nul
 
 rem 「設定＞アプリ」からアンインストールできるよう登録（管理者権限は不要）
-set "KEY=HKCU\Software\Microsoft\Windows\CurrentVersion\Uninstall\SleepGuardTCloud"
+set "KEY=HKCU\Software\Microsoft\Windows\CurrentVersion\Uninstall\SleepGuardApp"
 reg add "%KEY%" /v DisplayName     /t REG_SZ /d "スリープ防止ツール" /f >nul
 reg add "%KEY%" /v DisplayVersion  /t REG_SZ /d "1.0.0" /f >nul
-reg add "%KEY%" /v Publisher       /t REG_SZ /d "SCMビジネス推進室" /f >nul
+reg add "%KEY%" /v Publisher       /t REG_SZ /d "SleepGuard" /f >nul
 reg add "%KEY%" /v InstallLocation /t REG_SZ /d "%DEST%" /f >nul
 reg add "%KEY%" /v DisplayIcon     /t REG_SZ /d "%DEST%\スリープ防止.exe" /f >nul
 reg add "%KEY%" /v UninstallString /t REG_SZ /d "\"%DEST%\アンインストール.bat\"" /f >nul
