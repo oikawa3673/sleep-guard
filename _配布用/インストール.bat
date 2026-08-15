@@ -47,6 +47,8 @@ reg add "%KEY%" /v NoRepair        /t REG_DWORD /d 1 /f >nul
 echo   [完了] インストールしました。
 echo.
 echo   ・デスクトップとスタートメニューに「PCスリープガード」を作成
+echo   ・このフォルダ(展開したファイル)は削除して構いません
+echo     アプリ本体は %DEST% にコピー済みです
 echo   ・アンインストールは「設定 ＞ アプリ」から、または
 echo     %DEST%\アンインストール.bat
 echo.
