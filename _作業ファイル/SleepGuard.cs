@@ -40,6 +40,14 @@ public class SleepGuard : Form
     Timer timer;
     bool isOn;
     DateTime startAt;
+    Icon AppIcon;
+
+    // exe自身に埋め込まれたアイコンを取り出す（別ファイルを同梱せずに済む）
+    static Icon LoadAppIcon()
+    {
+        try { return Icon.ExtractAssociatedIcon(Application.ExecutablePath); }
+        catch { return SystemIcons.Application; }
+    }
 
     public SleepGuard()
     {
@@ -50,7 +58,8 @@ public class SleepGuard : Form
         StartPosition = FormStartPosition.CenterScreen;
         TopMost = true;
         BackColor = Navy;
-        Icon = MakeIcon(Color.Gray);
+        AppIcon = LoadAppIcon();          // exeに埋め込んだアイコン
+        Icon = AppIcon;
 
         lblState = new Label();
         lblState.Text = "OFF";
@@ -161,15 +170,19 @@ public class SleepGuard : Form
         SetProcessWorkingSetSize(GetCurrentProcess(), (IntPtr)(-1), (IntPtr)(-1));
     }
 
-    // 状態色の丸アイコンを生成（アイコンファイルを同梱しないためサイズ節約）
-    static Icon MakeIcon(Color c)
+    // アプリアイコンに状態ランプ(緑=ON / 灰=OFF)を重ねたトレイ用アイコンを作る
+    Icon MakeIcon(Color c)
     {
         using (Bitmap bmp = new Bitmap(16, 16))
         using (Graphics g = Graphics.FromImage(bmp))
         {
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
             g.Clear(Color.Transparent);
-            using (SolidBrush b = new SolidBrush(c)) g.FillEllipse(b, 2, 2, 12, 12);
+            if (AppIcon != null) g.DrawIcon(AppIcon, new Rectangle(0, 0, 16, 16));
+            // 右下に状態ランプ（白フチ付きで小さくても見える）
+            using (SolidBrush w = new SolidBrush(Color.White)) g.FillEllipse(w, 8, 8, 8, 8);
+            using (SolidBrush b = new SolidBrush(c))          g.FillEllipse(b, 9, 9, 6, 6);
             return Icon.FromHandle(bmp.GetHicon());
         }
     }
