@@ -1,4 +1,4 @@
-﻿// スリープ防止ツール (SleepGuard)
+﻿// PCスリープガード (PC Sleep Guard)
 // ONの間だけ スリープ・画面OFF・スクリーンセーバー(自動ロック) を抑止する。
 // 負荷を最小にするため、常駐時はタイマー停止＋ワーキングセット圧縮を行う。
 using System;
@@ -51,7 +51,7 @@ public class SleepGuard : Form
 
     public SleepGuard()
     {
-        Text = "スリープ防止";
+        Text = "PCスリープガード";
         ClientSize = new Size(284, 172);
         FormBorderStyle = FormBorderStyle.FixedSingle;
         MaximizeBox = false;
@@ -89,7 +89,7 @@ public class SleepGuard : Form
 
         tray = new NotifyIcon();
         tray.Icon = Icon;
-        tray.Text = "スリープ防止: OFF";
+        tray.Text = "PCスリープガード: OFF";
         tray.Visible = true;
         ContextMenuStrip menu = new ContextMenuStrip();
         menu.Items.Add("画面を表示", null, delegate { ShowWindowAgain(); });
@@ -144,7 +144,7 @@ public class SleepGuard : Form
             lblInfo.Text = "抑止中… 経過 0 分\n席を離れるときは OFF か Win+L";
             btn.Text = "OFF にする";
             btn.BackColor = Red;
-            tray.Text = "スリープ防止: ON";
+            tray.Text = "PCスリープガード: ON";
             tray.Icon = MakeIcon(Green);
         }
         else
@@ -156,7 +156,7 @@ public class SleepGuard : Form
             lblInfo.Text = "スリープ・画面OFF・自動ロックを抑止します";
             btn.Text = "ON にする";
             btn.BackColor = Blue;
-            tray.Text = "スリープ防止: OFF";
+            tray.Text = "PCスリープガード: OFF";
             tray.Icon = MakeIcon(Color.Gray);
         }
         Trim();
@@ -197,7 +197,7 @@ public class SleepGuard : Form
             if (!isNew)
             {
                 // 既に起動中なら、その画面を前面に出して静かに終了する
-                IntPtr h = FindWindow(null, "スリープ防止");
+                IntPtr h = FindWindow(null, "PCスリープガード");
                 if (h != IntPtr.Zero) { ShowWindow(h, 9 /* SW_RESTORE */); SetForegroundWindow(h); }
                 return;
             }

@@ -1,15 +1,15 @@
-# スリープ防止ツール v1.0.0
+# PCスリープガード v1.0.0
 
 PCが勝手に**スリープ・画面OFF・スクリーンセーバー(自動ロック)**になるのを、**ONの間だけ**抑止する常駐アプリ。
 Claude Code などにPC操作をさせている途中で止まる／デモ中に画面が消えるのを防ぐのが目的。
 
-- **本体＝直下 `スリープ防止.exe`**（9.5KB・単体で動く。追加ランタイム不要）
-- **他PCへの配布＝直下 `スリープ防止ツール_配布用.zip`**（7.3KB）
+- **本体＝直下 `PCスリープガード.exe`**（9.5KB・単体で動く。追加ランタイム不要）
+- **他PCへの配布＝直下 `PCスリープガード_配布用.zip`**（7.3KB）
 - 配布物の中身は `_配布用/`、ソースと旧版は `_作業ファイル/`
 
 ## 使い方
 
-1. `スリープ防止.exe` を起動（インストール済みならデスクトップの「スリープ防止」）
+1. `PCスリープガード.exe` を起動（インストール済みならデスクトップの「PCスリープガード」）
 2. **「ON にする」** をクリック → 緑の **ON** になれば抑止中（経過時間を表示）
 3. 終わったら **「OFF にする」** か、ウィンドウを閉じる（閉じれば自動解除）
 
@@ -19,9 +19,9 @@ Claude Code などにPC操作をさせている途中で止まる／デモ中に
 
 ## 他のPCへインストール
 
-`スリープ防止ツール_配布用.zip` を渡し、展開して **`インストール.bat` をダブルクリック**するだけ。
+`PCスリープガード_配布用.zip` を渡し、展開して **`インストール.bat` をダブルクリック**するだけ。
 
-- **管理者権限は不要**（`%LOCALAPPDATA%\Programs\スリープ防止ツール` に入る）
+- **管理者権限は不要**（`%LOCALAPPDATA%\Programs\PCスリープガード` に入る）
 - デスクトップとスタートメニューにショートカットを作成
 - 「設定 ＞ アプリ」にも登録されるので、そこからアンインストール可能
 
@@ -55,7 +55,7 @@ Windows標準のC#コンパイラを使う（Visual Studio不要）。
 
 ```
 C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe /nologo /target:winexe /optimize+ ^
-  /out:スリープ防止.exe /reference:System.dll /reference:System.Drawing.dll /reference:System.Windows.Forms.dll ^
+  /out:PCスリープガード.exe /reference:System.dll /reference:System.Drawing.dll /reference:System.Windows.Forms.dll ^
   _作業ファイル\SleepGuard.cs
 ```
 

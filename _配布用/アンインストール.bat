@@ -1,22 +1,22 @@
 @echo off
 chcp 932 >nul
 setlocal
-set "DEST=%LOCALAPPDATA%\Programs\スリープ防止ツール"
+set "DEST=%LOCALAPPDATA%\Programs\PCスリープガード"
 
 echo.
-echo   スリープ防止ツール  アンインストール
+echo   PCスリープガード  アンインストール
 echo   ====================================
 echo.
 choice /c YN /n /t 15 /d N /m "  アンインストールしますか? (Y/N) "
 if errorlevel 2 exit /b 0
 
 rem 起動中なら終了（抑止も解除される）
-taskkill /f /im "スリープ防止.exe" >nul 2>nul
+taskkill /f /im "PCスリープガード.exe" >nul 2>nul
 
 rem ショートカット削除
-del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\スリープ防止.lnk" >nul 2>nul
-del "%USERPROFILE%\Desktop\スリープ防止.lnk" >nul 2>nul
-del "%USERPROFILE%\OneDrive\デスクトップ\スリープ防止.lnk" >nul 2>nul
+del "%APPDATA%\Microsoft\Windows\Start Menu\Programs\PCスリープガード.lnk" >nul 2>nul
+del "%USERPROFILE%\Desktop\PCスリープガード.lnk" >nul 2>nul
+del "%USERPROFILE%\OneDrive\デスクトップ\PCスリープガード.lnk" >nul 2>nul
 
 rem 登録削除
 reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Uninstall\SleepGuardApp" /f >nul 2>nul
